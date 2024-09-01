@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const LoginForm = ({ handleShowLogin }: { handleShowLogin: () => void }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="flex gap-4">
@@ -9,13 +12,19 @@ const LoginForm = ({ handleShowLogin }: { handleShowLogin: () => void }) => {
           id="username"
           placeholder="@username"
         />
-        <button className="bg-purple-600 text-white font-bold px-5 py-2 rounded-sm">
+        <button
+          data-testid="login-button"
+          className="bg-purple-600 text-white font-bold px-5 py-2 rounded-sm"
+          onClick={() => navigate("/feed")}
+        >
           ENTRAR
         </button>
       </div>
 
       <div className="flex justify-end pt-5">
-        <button onClick={handleShowLogin}>No tienes cuenta? Entra aqui</button>
+        <button data-testid="signup-button" onClick={handleShowLogin}>
+          No tienes cuenta? Entra aqui
+        </button>
       </div>
     </>
   );

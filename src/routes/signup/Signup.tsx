@@ -3,7 +3,7 @@ import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
 
 export const Signup = () => {
-  const [showLogin, setShowLogin] = useState<boolean>(false);
+  const [showLogin, setShowLogin] = useState<boolean>(true);
 
   const handleShowLogin = () => {
     setShowLogin(!showLogin);
