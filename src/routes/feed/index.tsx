@@ -1,6 +1,10 @@
 import { MdOutlineSearch } from "react-icons/md";
+import { useAppSelector } from "../../store/hooks";
 
 const Feed = () => {
+  const users = useAppSelector((state) => state.users);
+
+  console.log(users);
   return (
     <div className="h-screen bg-slate-100">
       <div className="flex items-center gap-8 border-b py-3 px-6">
