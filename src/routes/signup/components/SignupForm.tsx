@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from "react";
 import { registerUser } from "../../../store/features/users/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../store/hooks";
+import { login } from "../../../store/features/auth/authSlice";
 
 type UserForm = {
   username: string;
@@ -21,8 +22,9 @@ const SignupForm = ({ handleShowLogin }: { handleShowLogin: () => void }) => {
   } = useForm<UserForm>();
   const onSubmit: SubmitHandler<UserForm> = (data) => {
     dispatch(registerUser({ ...data, avatar: preview }));
+    dispatch(login({ ...data, avatar: preview }));
     reset();
-    navigate("/feed");
+    navigate("/");
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
