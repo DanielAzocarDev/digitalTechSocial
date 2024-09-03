@@ -4,6 +4,7 @@ import { registerUser } from "../../../store/features/users/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../store/hooks";
 import { login } from "../../../store/features/auth/authSlice";
+import { imageToString } from "../../../utils/imageToString";
 
 type UserForm = {
   username: string;
@@ -28,7 +29,10 @@ const SignupForm = ({ handleShowLogin }: { handleShowLogin: () => void }) => {
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) setPreview(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files) {
+      const file = e.target.files[0];
+      imageToString(file, setPreview);
+    }
   };
 
   return (
