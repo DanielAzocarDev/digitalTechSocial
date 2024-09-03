@@ -1,5 +1,10 @@
 import { User } from "./User";
 
+export enum PostStatus {
+  DRAFTED = 'drafted',
+  PUBLISHED = 'published',
+  DELETED = 'deleted'
+}
 export interface Post {
   image?: string;
   message: string;
@@ -7,5 +12,5 @@ export interface Post {
   author: User;
   create_at: Date;
   location: string;
-  status: 'drafted' | 'deleted' | 'published';
+  status: PostStatus;
   }

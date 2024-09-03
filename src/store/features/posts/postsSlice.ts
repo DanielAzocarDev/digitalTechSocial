@@ -10,17 +10,23 @@ const initialState: PostsState = {
   posts: [],
 }
 
-export const usersSlice = createSlice({
+export const postsSlice = createSlice({
   name: 'posts',
   initialState,
   reducers: {
     addPost: (state, action: PayloadAction<Post>) => {
       state.posts.push(action.payload)
-    }
+    },
+    updatePost: (state, action: PayloadAction<Post>) => {
+      const index = state.posts.findIndex(post => post.create_at === action.payload.create_at)
+      if (index !== -1) {
+        state.posts[index] = action.payload
+      }
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {  addPost } = usersSlice.actions
+export const {  addPost, updatePost } = postsSlice.actions
 
-export default usersSlice.reducer
+export default postsSlice.reducer
